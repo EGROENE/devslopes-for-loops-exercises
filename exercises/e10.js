@@ -7,8 +7,10 @@ export function getClientsWithLetterInName(array, letter) {
   // Your code goes here...
   let acctNamesWithGivenLetter = [];
   for (let acct of array) {
-    if (acct.name.toLowerCase().includes(letter.toLowerCase())) {
-      acctNamesWithGivenLetter.push(acct.name);
+    for (let nameLetter of acct.name) {
+      if (nameLetter.toLowerCase() === letter.toLowerCase()) {
+        acctNamesWithGivenLetter.push(acct.name);
+      }
     }
   }
   return acctNamesWithGivenLetter;
