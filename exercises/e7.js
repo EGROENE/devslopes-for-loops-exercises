@@ -7,13 +7,20 @@ export function getClientWithLeastBalance(array) {
   // Your code goes here...
   let acctsWithBalanceOverZero = [];
   let acctWithLowestBalanceOverZeroArray = [];
+  let acctWithLowestBalanceOverZero;
   for (let acct of array) {
     if (acct.balance > 0) {
       acctsWithBalanceOverZero.push(acct);
-      acctsWithBalanceOverZero.sort((a, b) => a.balance-b.balance);
+      for (let i = 0; i < acctsWithBalanceOverZero.length; i++) {
+        acctWithLowestBalanceOverZero = acctsWithBalanceOverZero[0];
+        let currentAccount = acctsWithBalanceOverZero[i];
+        if (currentAccount.balance < acctWithLowestBalanceOverZero.balance) {
+          acctWithLowestBalanceOverZero = currentAccount;
+        }
+      }
     }
   }
-  acctWithLowestBalanceOverZeroArray.push(acctsWithBalanceOverZero[0]);
+  acctWithLowestBalanceOverZeroArray.push(acctWithLowestBalanceOverZero);
   return acctWithLowestBalanceOverZeroArray;
 }
 
